@@ -1,0 +1,91 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    }
+    
+    /****************** VARIABLES ******************/
+    
+    /* root */
+    :root {
+      --background-color:green;
+    }
+      
+      [data-theme="light"] {
+        --background-color:rgb(215, 218, 86);
+    
+      }
+      
+      [data-theme="dark"] {
+        --background-color:rgb(111, 139, 160);
+      }
+    
+
+body::-webkit-scrollbar {
+    display: none;
+  }
+
+.App {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--background-color);
+
+}
+
+nav {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background-color: rgb(9, 255, 0);
+    height: 7vh;
+    position: sticky;
+    top: 0;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    height: 90vh;
+    background-color: var(--background-color);
+}
+
+footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background-color: blue;
+    height: 5vh;
+    position: sticky;
+    bottom: 0;
+}
+
+.chart {
+    width: 50%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color:orangered;
+}
+
+.news {
+    width: 50%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color:cadetblue;
+}
+
