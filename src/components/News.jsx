@@ -12,6 +12,9 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Grid from '@mui/material/Grid';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+
 
 
 const ExpandMore = styled((props) => {
@@ -27,6 +30,18 @@ const ExpandMore = styled((props) => {
 
 const News = ({ news }) => {
   const [expanded, setExpanded] = useState(false);
+  const [red, setRed] = useState('red');
+  const [select, setSelected] = useState(0)
+
+  const redFunction = () => {
+    const color = red  === 'red' ? 'gray' : 'red';
+    setRed(color);
+  }
+
+  const handleSelect = (index) => {
+    setSelected(index);
+  }
+
   if (!news) return 'Loading...';
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -39,7 +54,7 @@ console.log(news)
   return (
     <div className='news' >
       <Grid container justify="center"  marginTop={10}  rowGap={3} columnGap={2}> 
-        {news.map((newS ) => (
+        {news.map((newS,idx ) => (
           <Grid  sx={{mx: 'auto'}} item component={Card} xs={8} md={5} lg={3} key={newS.title}>
             <CardHeader
               title={newS.title}
@@ -53,16 +68,25 @@ console.log(news)
               component="img"
               style={{ maxHeight:'200px', height: '200px' }}
             />
-              <a href={newS.link} target="_blank" rel="noopener noreferrer" >
-                Link --&gt; {newS.site}
-                </a>
             <CardContent>
+            <IconButton aria-label="Link To Site"  size='small'  sx={{mx:'auto', my:'auto'}}>
+              
+              <FontAwesomeIcon icon={faUpRightFromSquare} size='x' color='blue' /> 
+              &nbsp;&nbsp;&nbsp;
+              <a href={newS.link} target="_blank" rel="noopener noreferrer" >
+                {newS.site}
+                </a>
+            </IconButton>
               <Typography variant="body2" color="textSecondary">
                 {newS.description}
               </Typography>
             </CardContent>
             <CardActions disableSpacing>
-              <IconButton aria-label="add to favorites">
+              <IconButton aria-label="add to favorites" 
+              onClick={select !== idx ? () =>  handleSelect(idx) : () => handleSelect(null)}
+              onChange={redFunction}
+              style={{ color: select === idx ? red : 'gray' }}
+              >
                 <FavoriteIcon />
               </IconButton>
               <IconButton aria-label="share">
@@ -79,7 +103,7 @@ console.log(news)
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
               <CardContent>
-                <Typography paragraph>Method:</Typography>
+                <Typography paragraph>Details:</Typography>
                 <Typography paragraph>
                   Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
                   minutes.
@@ -108,4 +132,6 @@ export default News
 date: newS.pubDate,
 id: newS.news_id,
 link: newS.link,
-content: newS.content */
+content: newS.content 
+site: newS.site,
+*/
