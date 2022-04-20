@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 const url = 'https://disease.sh/v3/covid-19/countries'
 
 export const fetchData = async () => {
@@ -18,6 +19,45 @@ export const fetchData = async () => {
             }
         })
 
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+
+/* For fetching news */
+
+
+const newsURl = 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/news/get-coronavirus-news/1'
+
+const options = {
+    method: 'GET',
+    url: newsURl,
+    headers: {
+        'X-RapidAPI-Host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com',
+        'X-RapidAPI-Key': process.env.REACT_APP_API_KEY
+    }
+};
+
+const urlToString = (url) => {
+    return url.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0];
+}
+
+export const fetchNews = async () => {
+    try {
+        const response = await axios(options);
+        console.log(response.data);
+        return response.data.news.map((newS => {
+            return {
+                title: newS.title,
+                date: newS.pubDate,
+                id: newS.news_id,
+                link: newS.link,
+                content: newS.content,
+                image: newS.urlToImage,
+                site : urlToString(newS.link)
+            }
+        }))
     } catch (error) {
         console.log(error);
     }

@@ -3,6 +3,7 @@ import { faNewspaper, faChartLine, faHouseUser, faSun, faMoon, faArrowAltCircleD
 import React from 'react'
 import { Link } from 'react-router-dom';
 import '../App.css';
+import covid from '../images/covid.jpg'
 
 export const scrollToBottom = () => {
     window.scrollTo({
@@ -17,7 +18,10 @@ export default function Navbar({ switchTheme, theme }) {
 
     return (
         <nav>
-        
+                <header>
+    <h1>COVID 19 Tracker </h1>
+    <img src={covid} alt="covid" />
+    </header>
             <FontAwesomeIcon onClick={switchTheme} /* onChange={setScreenSize} */ theme={theme} color='black' size='2x'
                 icon={theme === 'dark' ? faMoon : faSun} />
             <Link to='/'>

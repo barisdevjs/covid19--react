@@ -13,9 +13,9 @@ const Cards = ({ data }) => {
 
   return (
     <div>
-      <Grid container justify="center" margin={10} rowGap={3}  columnGap={2} >
+      <Grid container justify="center" rowGap={3}  columnGap={2} >
         {data.map((card) => (
-          <Grid key={card.name} item component={Card}  xs={3} md={3} lg={2} >
+          <Grid key={card.name} sx={{mx: 'auto'}} item component={Card}   xs={12} md={6} lg={3} >
             <CardMedia
               image={card.flag}
               title={card.name}
