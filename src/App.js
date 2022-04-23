@@ -1,6 +1,6 @@
 import './App.css';
 import { Cards, Chart, News, Navbar,  Footer } from './components';
-import { fetchData, fetchNews } from './api/api';
+import { fetchData, fetchNews, fetchDetails } from './api/api';
 import { useEffect, useState } from 'react';
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import useLocalStorage from 'use-local-storage';
@@ -10,6 +10,7 @@ function App() {
   const [theme, setTheme] = useLocalStorage('theme', defaultDark ? 'dark' : 'light');
   const [data, setData] = useState([]);
   const [news, setNews] = useState([]);
+  const [details, setDetails] = useState([]);
 
   const switchTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
@@ -38,6 +39,15 @@ function App() {
     }
     fetchNewsAPI();
   }, [])
+
+  useEffect(() => {
+    const fetchDetailsAPI = async () => {
+      const initialDetails = await fetchDetails();
+      setDetails(initialDetails);
+    }
+    fetchDetailsAPI();
+  }, [])
+
 
 
   return (

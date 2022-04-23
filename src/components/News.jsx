@@ -14,6 +14,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Grid from '@mui/material/Grid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import Spinner from './Spinner';
 
 
 
@@ -30,62 +31,60 @@ const ExpandMore = styled((props) => {
 
 const News = ({ news }) => {
   const [expanded, setExpanded] = useState(false);
-  const [red, setRed] = useState('red');
-  const [select, setSelected] = useState(0)
-
-  const redFunction = () => {
-    const color = red  === 'red' ? 'gray' : 'red';
-    setRed(color);
-  }
+  const [select, setSelected] = useState([])
 
   const handleSelect = (index) => {
-    setSelected(index);
+    if (select.includes(index)) {
+      setSelected(select.filter(item => item !== index))
+    }
+    else {
+      setSelected([...select, index])
+    }
   }
 
-  if (!news) return 'Loading...';
+  if (!news) return <Spinner />;
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
+
   const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
-console.log(news)
 
   return (
     <div className='news' >
-      <Grid container justify="center"  marginTop={10}  rowGap={3} columnGap={2}> 
-        {news.map((newS,idx ) => (
-          <Grid  sx={{mx: 'auto'}} item component={Card} xs={8} md={5} lg={3} key={newS.title}>
+      <Grid container justify="center" marginTop={10} rowGap={3} columnGap={2}>
+        {news.map((newS, idx) => (
+          <Grid sx={{ mx: 'auto' }} item component={Card} xs={8} md={5} lg={3} key={newS.title}>
             <CardHeader
               title={newS.title}
-              subheader={new Date(newS.date).toLocaleDateString(undefined, options) }
-              style={{ maxHeight:'200px', height: '200px' }}
+              subheader={new Date(newS.date).toLocaleDateString(undefined, options)}
+              style={{ maxHeight: '200px', height: '200px' }}
 
             />
             <CardMedia
               image={newS.image}
               alt=''
               component="img"
-              style={{ maxHeight:'200px', height: '200px' }}
+              style={{ maxHeight: '200px', height: '200px' }}
             />
             <CardContent>
-            <IconButton aria-label="Link To Site"  size='small'  sx={{mx:'auto', my:'auto'}}>
-              
-              <FontAwesomeIcon icon={faUpRightFromSquare} size='x' color='blue' /> 
-              &nbsp;&nbsp;&nbsp;
-              <a href={newS.link} target="_blank" rel="noopener noreferrer" >
-                {newS.site}
+              <IconButton aria-label="Link To Site" size='small' sx={{ mx: 'auto', my: 'auto' }}>
+
+                <FontAwesomeIcon icon={faUpRightFromSquare} size='sm' color='blue' />
+                &nbsp;&nbsp;&nbsp;
+                <a href={newS.link} target="_blank" rel="noopener noreferrer" >
+                  {newS.site}
                 </a>
-            </IconButton>
+              </IconButton>
               <Typography variant="body2" color="textSecondary">
                 {newS.description}
               </Typography>
             </CardContent>
             <CardActions disableSpacing>
-              <IconButton aria-label="add to favorites" 
-              onClick={select !== idx ? () =>  handleSelect(idx) : () => handleSelect(null)}
-              onChange={redFunction}
-              style={{ color: select === idx ? red : 'gray' }}
+              <IconButton aria-label="add to favorites"
+                onClick={() => handleSelect(idx)}
+                style={{ color: select.includes(idx) ? 'red' : 'gray' }}
               >
                 <FavoriteIcon />
               </IconButton>
@@ -103,20 +102,12 @@ console.log(news)
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
               <CardContent>
-                <Typography paragraph>Details:</Typography>
-                <Typography paragraph>
-                  Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-                  minutes.
+                <Typography paragraph >
+                  {newS.content.length > 150 ?
+                    newS.content.substring(0, 150) + '...' :
+                    newS.content}
                 </Typography>
-                <Typography paragraph>
-                  Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high
-                  heat. Add chicken, shrimp and chorizo, and cook, stirring occasionally until lightly
-                  browned, 6 to 8 minutes. Transfer shrimp to a large plate and set aside, leaving
-                  chicken and chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes, onion,
-                  salt and pepper, and cook, stirring often until thickened and fragrant, about 10
-                  minutes. Add saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
-                </Typography>
-                </CardContent>
+              </CardContent>
             </Collapse>
           </Grid>
         ))}
@@ -125,13 +116,4 @@ console.log(news)
   )
 }
 
-
 export default News
-
-/* title: newS.title,
-date: newS.pubDate,
-id: newS.news_id,
-link: newS.link,
-content: newS.content 
-site: newS.site,
-*/
