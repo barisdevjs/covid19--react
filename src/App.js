@@ -32,6 +32,7 @@ function App() {
     fetchAPI();
   }, []);
 
+
   useEffect(() => {
     const fetchNewsAPI = async () => {
       const initialNews = await fetchNews();
@@ -47,7 +48,8 @@ function App() {
     }
     fetchDetailsAPI();
   }, [])
-
+  
+  console.log(details);
 
 
   return (
@@ -56,7 +58,7 @@ function App() {
         <Navbar switchTheme={switchTheme} theme={theme} />
           <Routes>
             <Route path="/" element={<Cards data={data} />} />
-            <Route path="/chart" element={<Chart />} />
+            <Route path="/chart/:country" element={<Chart details={details} />} />
             <Route path="/news" element={<News news={news} />} />
           </Routes>
         <Footer />

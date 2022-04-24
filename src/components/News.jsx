@@ -55,7 +55,7 @@ const News = ({ news }) => {
     <div className='news' >
       <Grid container justify="center" marginTop={10} rowGap={3} columnGap={2}>
         {news.map((newS, idx) => (
-          <Grid sx={{ mx: 'auto' }} item component={Card} xs={8} md={5} lg={3} key={newS.title}>
+          <Grid sx={{ mx: 'auto' }} item component={Card} xs={8} md={5} lg={3} key={newS.id}>
             <CardHeader
               title={newS.title}
               subheader={new Date(newS.date).toLocaleDateString(undefined, options)}
