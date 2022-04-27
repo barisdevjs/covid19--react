@@ -10,13 +10,12 @@ import { Link } from 'react-router-dom';
 
 const Cards = ({ data }) => {
   if (!data) return <Spinner />;
-  console.log(data) 
 
   return (
     <div>
       <Grid container justify="center" rowGap={3}  columnGap={2} >
         {data.map((card) => (
-          <Grid  sx={{mx: 'auto'}} item component={Card}  key={card.name}  xs={12} md={6} lg={3} >
+          <Grid  sx={{mx: 'auto'}} item component={Card}  key={card.name}  xs={10} md={5} lg={3} xl={2}>
             <Link to={`/chart/${card.name}`}>
             <CardMedia
               image={card.flag}

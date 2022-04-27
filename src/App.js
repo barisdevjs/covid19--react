@@ -1,6 +1,6 @@
 import './App.css';
 import { Cards, Chart, News, Navbar,  Footer } from './components';
-import { fetchData, fetchNews, fetchDetails } from './api/api';
+import { fetchData, fetchNews } from './api/api';
 import { useEffect, useState } from 'react';
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import useLocalStorage from 'use-local-storage';
@@ -10,7 +10,6 @@ function App() {
   const [theme, setTheme] = useLocalStorage('theme', defaultDark ? 'dark' : 'light');
   const [data, setData] = useState([]);
   const [news, setNews] = useState([]);
-  const [details, setDetails] = useState([]);
 
   const switchTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
@@ -32,7 +31,6 @@ function App() {
     fetchAPI();
   }, []);
 
-
   useEffect(() => {
     const fetchNewsAPI = async () => {
       const initialNews = await fetchNews();
@@ -41,15 +39,7 @@ function App() {
     fetchNewsAPI();
   }, [])
 
-  useEffect(() => {
-    const fetchDetailsAPI = async () => {
-      const initialDetails = await fetchDetails();
-      setDetails(initialDetails);
-    }
-    fetchDetailsAPI();
-  }, [])
-  
-  console.log(details);
+
 
 
   return (
@@ -58,7 +48,7 @@ function App() {
         <Navbar switchTheme={switchTheme} theme={theme} />
           <Routes>
             <Route path="/" element={<Cards data={data} />} />
-            <Route path="/chart/:country" element={<Chart details={details} />} />
+            <Route path="/chart/:country" element={<Chart  />} />
             <Route path="/news" element={<News news={news} />} />
           </Routes>
         <Footer />
