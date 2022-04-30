@@ -72,10 +72,27 @@ const urlDetails = `https://disease.sh/v3/covid-19/countries`
 export const fetchDetails = async (country) => {
     try {
         const response = await axios.get(`${urlDetails}/${country}`);
-        return Object.entries(response.data).flatMap(([key, value]) => {
-            return { [key]: value }
+        return Array.of(response.data).map(country => {
+            return {
+                name: country.country,
+                cases: country.cases,
+                todayCases: country.todayCases,
+                deaths: country.deaths,
+                flag: country.countryInfo?.flag,
+                todayDeaths: country.todayDeaths,
+                active: country.active,
+                critical: country.critical,
+            }
         })
     } catch (error) {
         console.log(error);
     }
 };
+
+
+
+/* return Object.entries(response.data).flatMap(([key, value]) => (
+    {
+        [key]: value
+    }
+)) */

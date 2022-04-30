@@ -31,6 +31,8 @@ function App() {
     fetchAPI();
   }, []);
 
+// console.log(data)
+
   useEffect(() => {
     const fetchNewsAPI = async () => {
       const initialNews = await fetchNews();
