@@ -88,11 +88,3 @@ export const fetchDetails = async (country) => {
         console.log(error);
     }
 };
-
-
-
-/* return Object.entries(response.data).flatMap(([key, value]) => (
-    {
-        [key]: value
-    }
-)) */

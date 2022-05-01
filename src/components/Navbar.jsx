@@ -18,10 +18,10 @@ export default function Navbar({ switchTheme, theme }) {
 
     return (
         <nav>
-                <header>
-    <h1>COVID 19 Tracker </h1>
-    <img src={covid} alt="covid" />
-    </header>
+            <header>
+                <h1>COVID 19 Tracker </h1>
+                <img src={covid} alt="covid" />
+            </header>
             <FontAwesomeIcon onClick={switchTheme} /* onChange={setScreenSize} */ theme={theme} color='black' size='2x'
                 icon={theme === 'dark' ? faMoon : faSun} />
             <Link to='/'>
@@ -30,7 +30,7 @@ export default function Navbar({ switchTheme, theme }) {
             <Link to='/news'>
                 <FontAwesomeIcon icon={faNewspaper} size='2x' />
             </Link>
-            <Link to='/chart'>
+            <Link to='/chart/Turkey'>
                 <FontAwesomeIcon icon={faChartLine} size='2x' color='red' />
             </Link>
             <FontAwesomeIcon icon={faArrowAltCircleDown} size='2x' color='black'

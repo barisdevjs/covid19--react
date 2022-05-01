@@ -1,7 +1,7 @@
 import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React  from 'react'
-import {scrollToBottom} from './Navbar'
+import React from 'react'
+import { scrollToBottom } from './Navbar'
 
 function Footer() {
   const scrollToTop = () => {
@@ -16,8 +16,8 @@ function Footer() {
       <FontAwesomeIcon icon={faArrowUp} size='2x' color='red'
         onClick={scrollToTop}
       />
-      <FontAwesomeIcon icon={faArrowDown}  size='2x' color='red'
-      onClick={scrollToBottom}
+      <FontAwesomeIcon icon={faArrowDown} size='2x' color='red'
+        onClick={scrollToBottom}
       />
     </footer>
   )
