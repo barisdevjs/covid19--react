@@ -48,13 +48,13 @@ export const fetchNews = async () => {
         const response = await axios(options);
         return response.data.news.map((newS => {
             return {
-                title: newS.title,
-                date: newS.pubDate,
-                id: newS.news_id,
-                link: newS.link,
-                content: newS.content,
-                image: newS.urlToImage,
-                site: urlToString(newS.link)
+                title: newS?.title,
+                date: newS?.pubDate,
+                id: newS?.news_id,
+                link: newS?.link,
+                content: newS?.content,
+                image: newS?.urlToImage,
+                site: urlToString(newS?.link)
             }
         }))
     } catch (error) {
