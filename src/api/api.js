@@ -24,9 +24,7 @@ export const fetchData = async () => {
     }
 };
 
-
 /* For fetching news */
-
 
 const newsURl = 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/news/get-coronavirus-news/0'
 
