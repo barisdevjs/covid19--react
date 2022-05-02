@@ -13,7 +13,7 @@ const Cards = ({ data }) => {
 
   return (
     <div>
-      <Grid container justify="center" rowGap={3} columnGap={2} marginTop={4}>
+      <Grid container justify="center" rowGap={3} columnGap={2} marginTop={4} marginBottom={4}>
         {data.map((card) => (
           <Grid sx={{ mx: 'auto' }} item component={Card} key={card.name} xs={10} md={5} lg={3} xl={2}>
             <Link to={`/chart/${card.name}`}>

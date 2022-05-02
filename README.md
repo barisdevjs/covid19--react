@@ -21,11 +21,14 @@ https://user-images.githubusercontent.com/84816619/152687745-54c00f54-1e23-47df-
 
 ---
 
-- You can search city or country depending on your language
-- You will see every component immediately updated when you hit the enter key
-- The Chart will automatically displayed based on the search key
-- You will see the following days forecast at the bottom of the page
+- You can find all the countries by their flag in the Countries
+- In news section we have a toggle button with likes and if you click the link you will see the news in the actual website
+- The Chart will automatically displayed based on the selected country FLAG
+- Navbar > Click chart icon to see the Turkish Chart
+- App is responsive by the help of Material-UI
 ---
+
+### These are the technologies used in the project
 
 
 | React Hooks | Chart.js |

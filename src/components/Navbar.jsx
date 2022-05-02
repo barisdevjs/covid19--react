@@ -14,15 +14,14 @@ export const scrollToBottom = () => {
 };
 
 export default function Navbar({ switchTheme, theme }) {
-
-
+    
     return (
         <nav>
             <header>
                 <h1>COVID 19 Tracker </h1>
                 <img src={covid} alt="covid" />
             </header>
-            <FontAwesomeIcon onClick={switchTheme} /* onChange={setScreenSize} */ theme={theme} color='black' size='2x'
+            <FontAwesomeIcon onClick={switchTheme}  theme={theme} color={ theme === 'dark' ? 'black' : 'orange'} size='2x'
                 icon={theme === 'dark' ? faMoon : faSun} />
             <Link to='/'>
                 <FontAwesomeIcon icon={faHouseUser} size='2x' color='blue' />
