@@ -5,10 +5,6 @@
 
 [Go to Site](https://tangerine-froyo-b37395.netlify.app/ "COVID-19 App")
 
-# This is a small demo video for the app
-
-https://user-images.githubusercontent.com/84816619/152687745-54c00f54-1e23-47df-a429-f2403fbb8bc1.mp4
-
 ## Below you will see the pages of a weather app
 
 ![alt text](https://github.com/barisdevjs/covid19--react/blob/main/src/screenshots/screenshot1.jpg)
