@@ -3,7 +3,7 @@
 
 ## DEMO
 
-[Go to Site](https://weatherapp111.netlify.app/ "Weather App")
+[Go to Site](https://tangerine-froyo-b37395.netlify.app/ "COVID-19 App")
 
 # This is a small demo video for the app
 
