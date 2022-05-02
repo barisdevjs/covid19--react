@@ -5,7 +5,7 @@
 
 [Go to Site](https://tangerine-froyo-b37395.netlify.app/ "COVID-19 App")
 
-## Below you will see the pages of a weather app
+## Below you will see the pages of a COVID-19 app
 
 ![alt text](https://github.com/barisdevjs/covid19--react/blob/main/src/screenshots/screenshot1.jpg)
 
@@ -25,7 +25,6 @@
 ---
 
 ### These are the technologies used in the project
-
 
 | React Hooks | Chart.js |
 | axios  | material-ui |
