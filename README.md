@@ -3,7 +3,7 @@
 
 ## DEMO
 
-[Go to Site](https://eclectic-wisp-796dad.netlify.app/ "COVID-19 App")
+[Go to Site](https://covid19-reactt.netlify.app/ "COVID-19 App")
 
 ## Below you will see the pages of a COVID-19 app
 
